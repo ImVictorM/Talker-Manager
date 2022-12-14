@@ -13,7 +13,29 @@ async function readById(relativePath, id) {
   return requested;
 }
 
+async function write(relativePath, dataToWrite) {
+  const filePath = path.join(__dirname, relativePath);
+  await fs.writeFile(filePath, JSON.stringify(dataToWrite, null, 2));
+}
+
+async function addToFile(relativePath, newData) {
+  const file = await read(relativePath);
+  const { name, age, talk } = newData;
+  const newIndex = file[file.length - 1].id + 1;
+
+  const updatedData = {
+    name,
+    age,
+    id: newIndex,
+    talk,
+  };
+  file.push(updatedData);
+
+  await write(relativePath, file);
+}
+
 module.exports = {
   read,
   readById,
+  addToFile,
 };
