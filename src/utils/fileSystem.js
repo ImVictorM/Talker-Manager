@@ -7,6 +7,13 @@ async function read(relativePath) {
   return JSON.parse(file);
 }
 
+async function readById(relativePath, id) {
+  const file = await read(relativePath);
+  const requested = file.find((element) => Number(element.id) === Number(id));
+  return requested;
+}
+
 module.exports = {
   read,
+  readById,
 };
