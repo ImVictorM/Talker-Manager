@@ -7,7 +7,7 @@ function validatePersonalInfo(req, res, next) {
   if (age < MINIMUM_AGE) {
     return res.status(400).json({ message: 'A pessoa palestrante deve ser maior de idade' });
   }
-  return next;
+  return next();
 }
 
 module.exports = validatePersonalInfo;

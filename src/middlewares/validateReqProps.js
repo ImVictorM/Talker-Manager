@@ -1,4 +1,4 @@
-function validateProps(req, res, next) {
+function validateReqProps(req, res, next) {
   const { body } = req;
   const bodyReqProps = ['name', 'age', 'talk'];
   const talkReqProps = ['watchedAt', 'rate'];
@@ -19,4 +19,4 @@ function validateProps(req, res, next) {
   return next();
 }
 
-module.exports = validateProps;
+module.exports = validateReqProps;

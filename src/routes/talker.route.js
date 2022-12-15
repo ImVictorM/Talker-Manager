@@ -1,6 +1,11 @@
 const express = require('express');
 const { read, readById, addToFile } = require('../utils/fileSystem');
-const { validateToken } = require('../middlewares');
+const { 
+  validateToken, 
+  validateReqProps,
+  validatePersonalInfo,
+  validateTalkInfo,
+} = require('../middlewares');
 
 const router = express.Router();
 const TALKER_REL_PATH = '../talker.json';
@@ -10,12 +15,19 @@ router.get('/', async (_req, res) => {
   return res.status(200).json(talkers);
 });
 
-router.post('/', validateToken, async (req, res) => {
-  await addToFile(TALKER_REL_PATH, req.body);
-  const file = await read(TALKER_REL_PATH);
-  const lastUpdated = file[file.length - 1];
-  return res.status(201).json(lastUpdated);
-});
+router.post(
+  '/', 
+  validateToken, 
+  validateReqProps,
+  validatePersonalInfo,
+  validateTalkInfo,
+  async (req, res) => {
+    await addToFile(TALKER_REL_PATH, req.body);
+    const file = await read(TALKER_REL_PATH);
+    const lastUpdated = file[file.length - 1];
+    return res.status(201).json(lastUpdated);
+  },
+);
 
 router.get('/:id', async (req, res) => {
   const { id } = req.params;
