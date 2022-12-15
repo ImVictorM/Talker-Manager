@@ -41,9 +41,16 @@ async function updateFile(relativePath, id, updatedData) {
   await write(relativePath, file);
 }
 
+async function deleteById(relativePath, id) {
+  const file = await read(relativePath);
+  const updatedFile = file.filter((element) => Number(element.id) !== Number(id));
+  await write(relativePath, updatedFile);
+}
+
 module.exports = {
   read,
   readById,
   addToFile,
   updateFile,
+  deleteById,
 };

@@ -1,5 +1,5 @@
 const express = require('express');
-const { read, readById, addToFile, updateFile } = require('../utils/fileSystem');
+const { read, readById, addToFile, updateFile, deleteById } = require('../utils/fileSystem');
 const { 
   validateToken, 
   validateReqProps,
@@ -54,5 +54,11 @@ router.put(
     return res.status(200).json(updated);
   },
 );
+
+router.delete('/:id', validateToken, async (req, res) => {
+  const { id } = req.params;
+  await deleteById(TALKER_REL_PATH, id);
+  return res.status(204).end();
+});
 
 module.exports = router;
