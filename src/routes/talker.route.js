@@ -15,6 +15,13 @@ router.get('/', async (_req, res) => {
   return res.status(200).json(talkers);
 });
 
+router.get('/search', validateToken, async (req, res) => {
+  const { q } = req.query;
+  const talkers = await read(TALKER_REL_PATH);
+  const reqTalkers = talkers.filter((talker) => talker.name.includes(q));
+  return res.status(200).json(reqTalkers);
+});
+
 router.post(
   '/', 
   validateToken, 
