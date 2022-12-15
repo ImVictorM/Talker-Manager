@@ -34,8 +34,16 @@ async function addToFile(relativePath, newData) {
   await write(relativePath, file);
 }
 
+async function updateFile(relativePath, id, updatedData) {
+  const file = await read(relativePath);
+  const indexToUpdate = file.findIndex((element) => Number(element.id) === Number(id));
+  file.splice(indexToUpdate, 1, { id: Number(id), ...updatedData });
+  await write(relativePath, file);
+}
+
 module.exports = {
   read,
   readById,
   addToFile,
+  updateFile,
 };

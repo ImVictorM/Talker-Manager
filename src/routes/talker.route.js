@@ -1,5 +1,5 @@
 const express = require('express');
-const { read, readById, addToFile } = require('../utils/fileSystem');
+const { read, readById, addToFile, updateFile } = require('../utils/fileSystem');
 const { 
   validateToken, 
   validateReqProps,
@@ -39,5 +39,20 @@ router.get('/:id', async (req, res) => {
     message: 'Pessoa palestrante não encontrada',
   });
 });
+
+router.put(
+  '/:id', 
+  validateToken, 
+  validateReqProps, 
+  validatePersonalInfo, 
+  validateTalkInfo,
+  async (req, res) => {
+    const { id } = req.params;
+    const { body } = req;
+    await updateFile(TALKER_REL_PATH, id, body);
+    const updated = await readById(TALKER_REL_PATH, id);
+    return res.status(200).json(updated);
+  },
+);
 
 module.exports = router;
