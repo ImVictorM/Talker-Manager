@@ -24,6 +24,9 @@ In this project, I was able to:
             <th>JavaScript</th>
             <th>Express</th>
             <th>Node.JS</th>
+            <th>Nodemon</th>
+            <th>Insomnia</th>
+            <th>Thunder Client</th>
         </tr>
     </thead>
     <tbody>
@@ -50,8 +53,39 @@ In this project, I was able to:
             </td>
             <td align="center">
                 <a href="https://nodejs.org" target="_blank" rel="noreferrer"> 
-                    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" 
+                    <img 
+                        src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" 
                         alt="nodejs" 
+                        width="40" 
+                        height="40"
+                    /> 
+                </a>
+            </td>
+             <td align="center">
+                <a href="https://www.npmjs.com/package/nodemon" target="_blank" rel="noreferrer"> 
+                    <img 
+                        src="https://www.svgrepo.com/show/354122/nodemon.svg" 
+                        alt="nodemon" 
+                        width="40" 
+                        height="40"
+                    /> 
+                </a>
+            </td>
+             <td align="center">
+                <a href="https://insomnia.rest/" target="_blank" rel="noreferrer"> 
+                    <img 
+                        src="https://storage.googleapis.com/indie-hackers.appspot.com/product-avatars/insomnia/ibTLPyjwVebnZjMGKvz6ztarnuV2" 
+                        alt="insomnia" 
+                        width="40" 
+                        height="40"
+                    /> 
+                </a>
+            </td>
+             <td align="center">
+                <a href="https://www.thunderclient.com/" target="_blank" rel="noreferrer"> 
+                    <img 
+                        src="https://rangav.gallerycdn.vsassets.io/extensions/rangav/vscode-thunder-client/2.2.0/1671111831051/Microsoft.VisualStudio.Services.Icons.Default" 
+                        alt="thunder-client" 
                         width="40" 
                         height="40"
                     /> 
